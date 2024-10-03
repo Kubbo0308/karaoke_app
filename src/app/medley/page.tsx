@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 export default function Medley() {
@@ -12,12 +12,12 @@ export default function Medley() {
   };
 
   const getRandomGender = () => {
-    const genders = ["male", "female"];
+    const genders = ["男性", "女性"];
     setSex(genders[Math.floor(Math.random() * genders.length)]);
   };
   return (
     <>
-      <Text>メドレー</Text>
+      <Heading>メドレー</Heading>
       <Flex gap="16px">
         <Text>{age}</Text>
         <Text>{sex}</Text>
