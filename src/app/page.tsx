@@ -11,7 +11,7 @@ export default function Home() {
           ビンゴゲーム（協力）
         </Link>
         <Link as={NextLink} href="/bingo/match">
-          ビンゴゲーム対戦
+          ビンゴゲーム（対戦）
         </Link>
         <Link as={NextLink} href="/medley">
           メドレー歌えるかチャレンジ
