@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Cooperation() {
   const [rangeValues, setRangeValues] = useState<number[]>([80, 100]);
-  const [numbers, setNumbers] = useState<number[]>([]);
+  const [numbers, setNumbers] = useState<number[]>(Array(16).fill(0));
   const [selected, setSelected] = useState<boolean[]>(Array(16).fill(false));
 
   const toggleSelect = (index: number) => {
