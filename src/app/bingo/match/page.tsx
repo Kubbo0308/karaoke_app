@@ -1,14 +1,11 @@
 "use client";
 
+import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
 import {
   Button,
   Flex,
   Heading,
   Input,
-  RangeSlider,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  RangeSliderTrack,
   Table,
   TableContainer,
   Tbody,
@@ -37,13 +34,12 @@ export default function Match() {
     );
     const randomScores: number[] = [];
     for (let i = 0; i < num; i++) {
-      if (range.length > 0) {
-        const randomIndex = Math.floor(Math.random() * range.length);
-        randomScores.push(range[randomIndex]);
-        range.splice(randomIndex, 1);
-      } else {
+      if (range.length === 0) {
         break;
       }
+      const randomIndex = Math.floor(Math.random() * range.length);
+      randomScores.push(range[randomIndex]);
+      range.splice(randomIndex, 1);
     }
     return randomScores;
   };
@@ -56,8 +52,10 @@ export default function Match() {
   };
 
   const removeMember = (index: number) => {
-    setMember((prev) => prev.filter((_, index) => index !== index));
-    setMemberScore((prev) => prev.filter((_, index) => index !== index));
+    setMember((prev) => prev.filter((_, memberIndex) => memberIndex !== index));
+    setMemberScore((prev) =>
+      prev.filter((_, scoreIndex) => scoreIndex !== index)
+    );
   };
   return (
     <>
@@ -70,28 +68,10 @@ export default function Match() {
           onChange={(event) => setName(event.target.value)}
         />
         <Text>点数の幅</Text>
-        <RangeSlider
-          aria-label={["min", "max"]}
+        <PointsRangeSlider
           value={rangeValues}
-          min={60}
-          max={100}
-          step={1}
-          onChange={(val) => setRangeValues(val)}
-        >
-          <RangeSliderTrack>
-            <RangeSliderFilledTrack />
-          </RangeSliderTrack>
-          <RangeSliderThumb index={0} boxSize={8} m={0}>
-            <Text fontSize="16px" fontWeight={800}>
-              {rangeValues[0]}
-            </Text>
-          </RangeSliderThumb>
-          <RangeSliderThumb index={1} boxSize={8} m={0}>
-            <Text fontSize="16px" fontWeight={800}>
-              {rangeValues[1]}
-            </Text>
-          </RangeSliderThumb>
-        </RangeSlider>
+          onChange={(value) => setRangeValues(value)}
+        />
         <Button onClick={() => addMember(name)}>追加</Button>
       </Flex>
       <TableContainer>
