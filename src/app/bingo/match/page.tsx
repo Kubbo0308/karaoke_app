@@ -1,20 +1,7 @@
 "use client";
 
 import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
-import {
-  Button,
-  Flex,
-  Heading,
-  Input,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, Input, Table, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 export default function Match() {
@@ -74,34 +61,30 @@ export default function Match() {
         />
         <Button onClick={() => addMember(name)}>追加</Button>
       </Flex>
-      <TableContainer>
-        <Table size="md">
-          <Thead>
-            <Tr>
-              <Th>名前</Th>
-              <Th>１個目</Th>
-              <Th>2個目</Th>
-              <Th>3個目</Th>
-              <Th></Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {member.map((item: string, index: number) => (
-              <Tr key={index}>
-                <Td>{item}</Td>
-                {memberScore[index]?.map(
-                  (score: number, scoreIndex: number) => (
-                    <Td key={scoreIndex}>{score}</Td>
-                  )
-                )}
-                <Td>
-                  <Button onClick={() => removeMember(index)}>削除</Button>
-                </Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <Table.Root size="md">
+        <Table.Header>
+          <Table.Row>
+            <Table.ColumnHeader>名前</Table.ColumnHeader>
+            <Table.ColumnHeader>１個目</Table.ColumnHeader>
+            <Table.ColumnHeader>2個目</Table.ColumnHeader>
+            <Table.ColumnHeader>3個目</Table.ColumnHeader>
+            <Table.ColumnHeader></Table.ColumnHeader>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {member.map((item: string, index: number) => (
+            <Table.Row key={index}>
+              <Table.Cell>{item}</Table.Cell>
+              {memberScore[index]?.map((score: number, scoreIndex: number) => (
+                <Table.Cell key={scoreIndex}>{score}</Table.Cell>
+              ))}
+              <Table.Cell>
+                <Button onClick={() => removeMember(index)}>削除</Button>
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table.Root>
     </>
   );
 }
