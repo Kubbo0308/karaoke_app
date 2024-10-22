@@ -9,6 +9,9 @@ export default function Match() {
   const [member, setMember] = useState<string[]>([]);
   const [rangeValues, setRangeValues] = useState<number[]>([80, 100]);
   const [memberScore, setMemberScore] = useState<number[][]>([]);
+  const [selected, setSelected] = useState<boolean[][]>([]);
+
+  const scoreNum = 3;
 
   const addRandomNumbers = (
     min: number,
@@ -31,10 +34,25 @@ export default function Match() {
     return randomScores;
   };
 
+  const toggleSelect = (parentIndex: number, childIndex: number) => {
+    // 選択状態をトグルする
+    console.log(selected);
+    setSelected((prev) => {
+      const newSelected = [...prev];
+      if (!newSelected[parentIndex]) return prev; // 安全チェック
+      // 内側の配列もコピーする必要がある
+      const updatedRow = [...newSelected[parentIndex]];
+      updatedRow[childIndex] = !updatedRow[childIndex];
+      newSelected[parentIndex] = updatedRow;
+      return newSelected;
+    });
+  };
+
   const addMember = (name: string) => {
-    const random = addRandomNumbers(rangeValues[0], rangeValues[1], 3);
+    const random = addRandomNumbers(rangeValues[0], rangeValues[1], scoreNum);
     setMember([...member, name]);
     setMemberScore((prev) => [...prev, random]);
+    setSelected((prev) => [...prev, Array(scoreNum).fill(false)]);
     setName("");
   };
 
@@ -65,9 +83,9 @@ export default function Match() {
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader>名前</Table.ColumnHeader>
-            <Table.ColumnHeader>１個目</Table.ColumnHeader>
-            <Table.ColumnHeader>2個目</Table.ColumnHeader>
-            <Table.ColumnHeader>3個目</Table.ColumnHeader>
+            {[...Array(scoreNum)].map((_, index) => (
+              <Table.ColumnHeader key={index}>{index}個目</Table.ColumnHeader>
+            ))}
             <Table.ColumnHeader></Table.ColumnHeader>
           </Table.Row>
         </Table.Header>
@@ -76,7 +94,14 @@ export default function Match() {
             <Table.Row key={index}>
               <Table.Cell>{item}</Table.Cell>
               {memberScore[index]?.map((score: number, scoreIndex: number) => (
-                <Table.Cell key={scoreIndex}>{score}</Table.Cell>
+                <Table.Cell key={scoreIndex}>
+                  <Button
+                    bg={selected[index][scoreIndex] ? "blue.300" : "gray.200"}
+                    onClick={() => toggleSelect(index, scoreIndex)}
+                  >
+                    {score}
+                  </Button>
+                </Table.Cell>
               ))}
               <Table.Cell>
                 <Button onClick={() => removeMember(index)}>削除</Button>

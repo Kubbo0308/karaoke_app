@@ -59,7 +59,7 @@ export default function Cooperation() {
           <Box
             key={index}
             onClick={() => toggleSelect(index)}
-            bg={selected[index] ? "blue.300" : "gray.200"} // 選択されたマスは青、未選択は灰色
+            bg={selected[index] ? "blue.300" : "gray.200"}
             cursor="pointer"
             display="flex"
             alignItems="center"
