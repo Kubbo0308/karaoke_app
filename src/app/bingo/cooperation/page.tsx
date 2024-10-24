@@ -1,7 +1,15 @@
 "use client";
 
 import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
-import { Box, Button, Grid, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Grid,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 
@@ -41,19 +49,23 @@ export default function Cooperation() {
     return randomScores;
   };
   return (
-    <>
+    <Container>
       <Heading>協力</Heading>
-      <PointsRangeSlider
-        value={rangeValues}
-        onChange={(value) => setRangeValues(value)}
-      />
-      <Button
-        onClick={() =>
-          setNumbers(addRandomNumbers(rangeValues[0], rangeValues[1], 16))
-        }
-      >
-        追加
-      </Button>
+      <Flex gap={10} w="100%">
+        <PointsRangeSlider
+          value={rangeValues}
+          onChange={(value) => setRangeValues(value)}
+          RangeSliderProps={{ w: "80%" }}
+        />
+        <Button
+          onClick={() =>
+            setNumbers(addRandomNumbers(rangeValues[0], rangeValues[1], 16))
+          }
+          bg="blue.500"
+        >
+          <Text color="white">追加</Text>
+        </Button>
+      </Flex>
       <Grid templateColumns="repeat(4, 1fr)" gap={2} p={4}>
         {numbers.map((number, index) => (
           <Box
@@ -64,17 +76,17 @@ export default function Cooperation() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            h="80px"
-            w="80px"
+            h="60px"
             borderRadius="md"
             fontSize="xl"
             fontWeight="bold"
             transition="background-color 0.2s"
+            mx={0}
           >
-            <Text>{number}</Text>
+            <Text>{number === 0 ? "?" : number}</Text>
           </Box>
         ))}
       </Grid>
-    </>
+    </Container>
   );
 }

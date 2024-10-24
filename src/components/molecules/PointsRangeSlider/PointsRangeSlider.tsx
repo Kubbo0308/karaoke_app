@@ -1,6 +1,7 @@
 import {
   RangeSlider,
   RangeSliderFilledTrack,
+  RangeSliderProps,
   RangeSliderThumb,
   RangeSliderTrack,
   Text,
@@ -9,10 +10,11 @@ import {
 interface PointsRangeSliderProps {
   value: number[];
   onChange: (value: number[]) => void;
+  RangeSliderProps?: RangeSliderProps;
 }
 
 export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
-  const { value, onChange } = props;
+  const { value, onChange, RangeSliderProps } = props;
   return (
     <RangeSlider
       aria-label={["min", "max"]}
@@ -23,6 +25,7 @@ export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
       minStepsBetweenThumbs={3}
       step={1}
       onChange={onChange}
+      {...RangeSliderProps}
     >
       <RangeSliderTrack>
         <RangeSliderFilledTrack />

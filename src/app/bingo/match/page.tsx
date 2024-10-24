@@ -3,6 +3,7 @@
 import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
 import {
   Button,
+  Container,
   Flex,
   Heading,
   Input,
@@ -75,7 +76,7 @@ export default function Match() {
     );
   };
   return (
-    <>
+    <Container>
       <Heading>対戦</Heading>
       <Flex gap="16px" direction="column">
         <Text>名前</Text>
@@ -88,6 +89,7 @@ export default function Match() {
         <PointsRangeSlider
           value={rangeValues}
           onChange={(value) => setRangeValues(value)}
+          RangeSliderProps={{ w: "80%" }}
         />
         <Button onClick={() => addMember(name)}>追加</Button>
       </Flex>
@@ -96,7 +98,9 @@ export default function Match() {
           <Tr>
             <Th>名前</Th>
             {[...Array(scoreNum)].map((_, index) => (
-              <Th key={index}>{index}個目</Th>
+              <Th key={index}>
+                <Text>{index + 1}個目</Text>
+              </Th>
             ))}
             <Th></Th>
           </Tr>
@@ -106,7 +110,7 @@ export default function Match() {
             <Tr key={index}>
               <Td>{item}</Td>
               {memberScore[index]?.map((score: number, scoreIndex: number) => (
-                <Td key={scoreIndex}>
+                <Td key={scoreIndex} px={0}>
                   <Button
                     bg={selected[index][scoreIndex] ? "blue.300" : "gray.200"}
                     onClick={() => toggleSelect(index, scoreIndex)}
@@ -115,13 +119,15 @@ export default function Match() {
                   </Button>
                 </Td>
               ))}
-              <Td>
-                <Button onClick={() => removeMember(index)}>削除</Button>
+              <Td pl={4} pr={0}>
+                <Button onClick={() => removeMember(index)} bg="red.500" px={3}>
+                  <Text color="white">削除</Text>
+                </Button>
               </Td>
             </Tr>
           ))}
         </Tbody>
       </Table>
-    </>
+    </Container>
   );
 }

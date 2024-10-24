@@ -1,11 +1,11 @@
 import { Header } from "@/components/molecules/Header/Header";
-import { Flex, Heading, Link } from "@chakra-ui/react";
+import { Container, Flex, Heading, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React from "react";
 
 export default function Home() {
   return (
-    <>
+    <Container>
       <Header />
       <Heading>カラオケゲーム一覧</Heading>
       <Flex direction="column" gap="16px">
@@ -19,6 +19,6 @@ export default function Home() {
           メドレー歌えるかチャレンジ
         </Link>
       </Flex>
-    </>
+    </Container>
   );
 }
