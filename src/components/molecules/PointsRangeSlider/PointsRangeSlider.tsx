@@ -1,5 +1,10 @@
-import { Slider } from "@/components/ui/slider";
-import { Text } from "@chakra-ui/react";
+import {
+  RangeSlider,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
+  RangeSliderTrack,
+  Text,
+} from "@chakra-ui/react";
 
 interface PointsRangeSliderProps {
   value: number[];
@@ -9,13 +14,29 @@ interface PointsRangeSliderProps {
 export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
   const { value, onChange } = props;
   return (
-    <Slider
+    <RangeSlider
+      aria-label={["min", "max"]}
       defaultValue={value}
       value={value}
       min={70}
       max={100}
       minStepsBetweenThumbs={3}
-      onValueChange={(e) => onChange(e.value)}
-    />
+      step={1}
+      onChange={onChange}
+    >
+      <RangeSliderTrack>
+        <RangeSliderFilledTrack />
+      </RangeSliderTrack>
+      <RangeSliderThumb index={0} boxSize={8} m={0}>
+        <Text fontSize="16px" fontWeight={800}>
+          {value[0]}
+        </Text>
+      </RangeSliderThumb>
+      <RangeSliderThumb index={1} boxSize={8} m={0}>
+        <Text fontSize="16px" fontWeight={800}>
+          {value[1]}
+        </Text>
+      </RangeSliderThumb>
+    </RangeSlider>
   );
 };

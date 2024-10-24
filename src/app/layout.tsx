@@ -1,4 +1,4 @@
-import { Provider } from "@/components/ui/provider";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,9 +12,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="ja">
       <body>
-        <Provider>{children}</Provider>
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
   );
