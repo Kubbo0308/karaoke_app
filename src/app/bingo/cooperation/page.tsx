@@ -1,6 +1,6 @@
 "use client";
 
-import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -10,8 +10,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
-import { useState } from "react";
+import { PointsRangeSlider } from "@/components/molecules";
 
 export default function Cooperation() {
   const [rangeValues, setRangeValues] = useState<number[]>([80, 100]);

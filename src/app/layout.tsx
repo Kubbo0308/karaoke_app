@@ -1,5 +1,6 @@
-import { ChakraProvider } from "@chakra-ui/react";
 import type { Metadata } from "next";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Header } from "@/components/molecules";
 
 export const metadata: Metadata = {
   title: "カラオケゲームまとめ",
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        <ChakraProvider>
+          <Header />
+          {children}
+        </ChakraProvider>
       </body>
     </html>
   );

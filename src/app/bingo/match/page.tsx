@@ -1,6 +1,6 @@
 "use client";
 
-import { PointsRangeSlider } from "@/components/molecules/PointsRangeSlider/PointsRangeSlider";
+import { useState } from "react";
 import {
   Button,
   Container,
@@ -15,7 +15,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { PointsRangeSlider } from "@/components/molecules";
 
 export default function Match() {
   const [name, setName] = useState<string>("");
