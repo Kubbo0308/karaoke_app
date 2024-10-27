@@ -1,16 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Grid,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Grid, Heading, Text } from "@chakra-ui/react";
 import { PointsRangeSlider } from "@/components/molecules";
+import { FormLabel } from "@/components/atoms/FormLabel/FormLabel";
 
 export default function Cooperation() {
   const [rangeValues, setRangeValues] = useState<number[]>([80, 100]);
@@ -49,23 +42,25 @@ export default function Cooperation() {
   };
   return (
     <Container>
-      <Heading>協力</Heading>
-      <Flex gap={10} w="100%">
+      <Heading textAlign="center">協力</Heading>
+      <Box border="1px" borderColor="gray.200" borderRadius={6} p={4} mt={4}>
+        <FormLabel label="点数の幅" required={true} />
         <PointsRangeSlider
           value={rangeValues}
           onChange={(value) => setRangeValues(value)}
-          RangeSliderProps={{ w: "80%" }}
+          RangeSliderProps={{ w: "80%", mt: 4 }}
         />
         <Button
           onClick={() =>
             setNumbers(addRandomNumbers(rangeValues[0], rangeValues[1], 16))
           }
           bg="blue.500"
+          mt={6}
         >
           <Text color="white">追加</Text>
         </Button>
-      </Flex>
-      <Grid templateColumns="repeat(4, 1fr)" gap={2} p={4}>
+      </Box>
+      <Grid templateColumns="repeat(4, 1fr)" gap={2} p={4} mt={10}>
         {numbers.map((number, index) => (
           <Box
             key={index}
