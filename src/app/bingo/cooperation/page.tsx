@@ -42,7 +42,7 @@ export default function Cooperation() {
   };
   return (
     <Container>
-      <Heading textAlign="center">協力</Heading>
+      <Heading textAlign="center">協力ビンゴ</Heading>
       <Box border="1px" borderColor="gray.200" borderRadius={6} p={4} mt={4}>
         <FormLabel label="点数の幅" required={true} />
         <PointsRangeSlider

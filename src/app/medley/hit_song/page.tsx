@@ -17,8 +17,12 @@ export default function Medley() {
   };
   return (
     <>
-      <Heading textAlign="center">メドレー</Heading>
-      <Flex gap="16px" justifyContent="center">
+      <Heading textAlign="center">
+        ヒットソング
+        <br />
+        メドレーチャレンジ
+      </Heading>
+      <Flex gap="16px" justifyContent="center" mt={4}>
         <Text fontSize="20px">
           <chakra.span fontSize="28px" fontWeight={800} color="tomato">
             {age}
@@ -30,7 +34,7 @@ export default function Medley() {
           曲！
         </Text>
       </Flex>
-      <Flex gap="16px" justifyContent="center">
+      <Flex gap="16px" justifyContent="center" mt={4}>
         <Button onClick={getRandomYear}>年代</Button>
         <Button onClick={getRandomGender}>性別</Button>
       </Flex>

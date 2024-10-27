@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Container>
       <Heading>カラオケゲーム一覧</Heading>
-      <Flex direction="column" gap="16px">
+      <Flex direction="column" gap="16px" mt={4}>
         <Link as={NextLink} href={PAGE_INFO.COOPERATION.path}>
           ビンゴゲーム（協力）
         </Link>
@@ -14,7 +14,7 @@ export default function Home() {
           ビンゴゲーム（対戦）
         </Link>
         <Link as={NextLink} href={PAGE_INFO.MEDLEY.path}>
-          メドレー歌えるかチャレンジ
+          ヒットソングメドレーチャレンジ
         </Link>
       </Flex>
     </Container>
