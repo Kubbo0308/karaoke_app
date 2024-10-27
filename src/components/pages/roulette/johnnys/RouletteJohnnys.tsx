@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Flex, Text, chakra } from "@chakra-ui/react";
+import { Button, Flex, Text, chakra } from "@chakra-ui/react";
 import { Roulette, RouletteItem } from "react-hook-roulette";
 import { useRouletteJohnnys } from "./RouletteJohnnys.hooks";
 
@@ -14,8 +14,8 @@ export const RouletteJohnnys = (props: RouteletteJohnnysProps) => {
     rouletteItems,
   });
   return (
-    <Box mt={4}>
-      <Text textAlign="center" fontSize="18px" mb={4}>
+    <Flex mt={4} direction="column" gap={6} justifyContent="center">
+      <Text textAlign="center" fontSize="18px">
         結果：
         {result && (
           <chakra.span fontSize="24px" color="red.500">
@@ -24,7 +24,7 @@ export const RouletteJohnnys = (props: RouteletteJohnnysProps) => {
         )}
       </Text>
       <Roulette roulette={roulette} />
-      <Flex mt={6} justifyContent="center" gap={6}>
+      <Flex justifyContent="center" gap={6}>
         <Button onClick={onStart} bg="blue.500" color="white">
           スタート
         </Button>
@@ -32,6 +32,6 @@ export const RouletteJohnnys = (props: RouteletteJohnnysProps) => {
           ストップ
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
