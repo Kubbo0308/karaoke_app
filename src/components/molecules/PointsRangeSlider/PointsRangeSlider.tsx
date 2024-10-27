@@ -17,6 +17,7 @@ export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
   const { value, onChange, RangeSliderProps } = props;
   return (
     <RangeSlider
+      // eslint-disable-next-line jsx-a11y/aria-proptypes
       aria-label={["min", "max"]}
       defaultValue={value}
       value={value}
@@ -25,6 +26,7 @@ export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
       minStepsBetweenThumbs={3}
       step={1}
       onChange={onChange}
+      display="block"
       {...RangeSliderProps}
     >
       <RangeSliderTrack>
