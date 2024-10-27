@@ -86,6 +86,10 @@ export const BingoMatch = () => {
                 <Td key={scoreIndex} px={0}>
                   <Button
                     bg={selected[index][scoreIndex] ? "blue.300" : "gray.200"}
+                    _hover={{
+                      bg: selected[index][scoreIndex] ? "blue.300" : "gray.200",
+                      opacity: 0.5,
+                    }}
                     onClick={() => toggleSelect(index, scoreIndex)}
                     fontSize="14px"
                     mx="auto"

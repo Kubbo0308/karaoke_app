@@ -36,10 +36,14 @@ export const BingoCooperation = () => {
       </Box>
       <Grid templateColumns="repeat(4, 1fr)" gap={2} p={4} mt={10}>
         {numbers.map((number, index) => (
-          <Box
+          <Button
             key={index}
             onClick={() => toggleSelect(index)}
             bg={selected[index] ? "blue.300" : "gray.200"}
+            _hover={{
+              bg: selected[index] ? "blue.300" : "gray.200",
+              opacity: 0.5,
+            }}
             cursor="pointer"
             display="flex"
             alignItems="center"
@@ -52,7 +56,7 @@ export const BingoCooperation = () => {
             mx={0}
           >
             <Text>{number === 0 ? "?" : number}</Text>
-          </Box>
+          </Button>
         ))}
       </Grid>
     </>
