@@ -7,36 +7,30 @@ export default function Medley() {
   const [age, setAge] = useState<number>();
   const [sex, setSex] = useState<string>();
 
-  const getRandomYear = () => {
-    setAge(Math.floor(Math.random() * (2023 - 1980 + 1)) + 1980);
-  };
-
-  const getRandomGender = () => {
+  const getRandomValue = () => {
     const genders = ["男性", "女性"];
     setSex(genders[Math.floor(Math.random() * genders.length)]);
+    setAge(Math.floor(Math.random() * (2023 - 1980 + 1)) + 1980);
   };
   return (
     <>
-      <Heading textAlign="center">
-        ヒットソング
-        <br />
-        メドレーチャレンジ
-      </Heading>
+      <Heading textAlign="center">ヒットソングメドレーくじ</Heading>
       <Flex gap="16px" justifyContent="center" mt={4}>
         <Text fontSize="20px">
           <chakra.span fontSize="28px" fontWeight={800} color="tomato">
-            {age}
+            {typeof age === "undefined" ? "???" : age}
           </chakra.span>{" "}
           年の{" "}
           <chakra.span fontSize="28px" fontWeight={800} color="tomato">
-            {sex}
+            {typeof sex === "undefined" ? "???" : sex}
           </chakra.span>{" "}
           曲！
         </Text>
       </Flex>
       <Flex gap="16px" justifyContent="center" mt={4}>
-        <Button onClick={getRandomYear}>年代</Button>
-        <Button onClick={getRandomGender}>性別</Button>
+        <Button onClick={getRandomValue} bg="blue.500" color="white">
+          くじ引きスタート
+        </Button>
       </Flex>
     </>
   );

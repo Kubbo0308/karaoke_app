@@ -39,33 +39,34 @@ export const Header = () => {
           variant="outline"
         />
         <MenuList>
-          <MenuItem>
-            <Link
-              as={NextLink}
-              href={PAGE_INFO.COOPERATION.path}
-              _hover={{ textDecoration: "none", opacity: 0.5 }}
-            >
-              協力ビンゴ
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link
-              as={NextLink}
-              href={PAGE_INFO.MATCH.path}
-              _hover={{ textDecoration: "none", opacity: 0.5 }}
-            >
-              対戦ビンゴ
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link
-              as={NextLink}
-              href={PAGE_INFO.MEDLEY.path}
-              _hover={{ textDecoration: "none", opacity: 0.5 }}
-            >
-              ヒットソングメドレーチャレンジ
-            </Link>
-          </MenuItem>
+          <Link
+            as={NextLink}
+            href={PAGE_INFO.COOPERATION.path}
+            _hover={{ textDecoration: "none", opacity: 0.5 }}
+          >
+            <MenuItem>協力ビンゴ</MenuItem>
+          </Link>
+          <Link
+            as={NextLink}
+            href={PAGE_INFO.MATCH.path}
+            _hover={{ textDecoration: "none", opacity: 0.5 }}
+          >
+            <MenuItem>対戦ビンゴ</MenuItem>
+          </Link>
+          <Link
+            as={NextLink}
+            href={PAGE_INFO.MEDLEY.path}
+            _hover={{ textDecoration: "none", opacity: 0.5 }}
+          >
+            <MenuItem>ヒットソングメドレーくじ</MenuItem>
+          </Link>
+          <Link
+            as={NextLink}
+            href={PAGE_INFO.JOHNNYS_ROULETTE.path}
+            _hover={{ textDecoration: "none", opacity: 0.5 }}
+          >
+            <MenuItem>ジャニーズルーレット</MenuItem>
+          </Link>
         </MenuList>
       </Menu>
     </Flex>
