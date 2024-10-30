@@ -6,15 +6,15 @@ import {
   RangeSliderTrack,
   Text,
 } from "@chakra-ui/react";
+import { PropsWithChildren } from "react";
 
-interface PointsRangeSliderProps {
+interface PointsRangeSliderProps extends PropsWithChildren<RangeSliderProps> {
   value: number[];
   onChange: (value: number[]) => void;
-  RangeSliderProps?: RangeSliderProps;
 }
 
 export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
-  const { value, onChange, RangeSliderProps } = props;
+  const { value, onChange, ...rangeSliderProps } = props;
   return (
     <RangeSlider
       // eslint-disable-next-line jsx-a11y/aria-proptypes
@@ -27,7 +27,7 @@ export const PointsRangeSlider = (props: PointsRangeSliderProps) => {
       step={1}
       onChange={onChange}
       display="block"
-      {...RangeSliderProps}
+      {...rangeSliderProps}
     >
       <RangeSliderTrack>
         <RangeSliderFilledTrack />

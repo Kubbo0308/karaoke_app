@@ -55,7 +55,7 @@ export const BingoMatch = () => {
           <PointsRangeSlider
             value={rangeValues}
             onChange={(value) => setRangeValues(value)}
-            RangeSliderProps={{ w: "80%" }}
+            w="80%"
           />
         </Flex>
         <Button onClick={() => addMember(name)} bg="blue.500" color="white">

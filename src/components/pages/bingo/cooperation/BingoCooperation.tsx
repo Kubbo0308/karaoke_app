@@ -22,7 +22,8 @@ export const BingoCooperation = () => {
         <PointsRangeSlider
           value={rangeValues}
           onChange={(value) => setRangeValues(value)}
-          RangeSliderProps={{ w: "80%", mt: 4 }}
+          w="80%"
+          mt={4}
         />
         <Button
           onClick={() =>
