@@ -3,8 +3,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Header } from "@/components/molecules";
 
 export const metadata: Metadata = {
-  title: "カラオケゲームまとめ",
-  description: "カラオケで出来るさまざまなゲームを用意してます。",
+  title: "カラオケゲームのまとめサイト",
+  description:
+    "カラオケで出来るさまざまなゲーム用のツールを用意してます。一人から大人数まで対応してます。",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
