@@ -1,7 +1,14 @@
-import { RouletteJohnnys } from "@/components/pages/roulette/johnnys/RouletteJohnnys";
-import { ARTISTS } from "@/const";
+import { Metadata } from "next";
 import { Container, Heading } from "@chakra-ui/react";
 import { RouletteItem } from "react-hook-roulette";
+import { ARTISTS } from "@/const";
+import { RouletteJohnnys } from "@/components/pages/roulette/johnnys/RouletteJohnnys";
+
+export const metadata: Metadata = {
+  title: "ジャニーズルーレット - カラオケゲームのまとめサイト",
+  description:
+    "ランダムで出たジャニーズの曲を歌うゲームです。点数を競って戦うこともできます。",
+};
 
 export default function Johnnys() {
   const rouletteItems: RouletteItem[] = ARTISTS.JOHNNYS.map((item, index) => ({
